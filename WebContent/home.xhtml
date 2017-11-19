@@ -10,7 +10,9 @@
 	Olá #{sessionScope.user}!
 	Você está logado.
 	
+	
 	<h:form>
+		<h:commandLink value="Sair" action="#{beanUser.loggout}"/>
 	</h:form>
 </h:body>
 </html>

@@ -13,14 +13,14 @@ private EntityManager manager;
 		this.manager = manager;
 	}
 	
-	public void inserir(User user) {
+	public void insert(User user) {
 		manager.persist(user);
 	}
 	
-	public boolean validar(String login, String password) {
+	public boolean validate(String email, String password) {
 		Query query = manager.createQuery(
-				"select c from User c where c.login = ?1 and c.password = ?2");
-		query.setParameter(1, login).setParameter(2, password);
+				"select c from User c where c.email = ?1 and c.password = ?2");
+		query.setParameter(1, email).setParameter(2, password);
 		try {
 			query.getSingleResult();
 			return true;
