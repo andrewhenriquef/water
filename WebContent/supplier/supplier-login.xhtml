@@ -10,10 +10,10 @@
 <h:messages/>
 <h:form>
 	<h:outputLabel value="Login:" for="campo-login"/>
-	<h:inputText value="#{beanUser.email}" id="campo-login"/>
+	<h:inputText value="#{beanSupplier.email}" id="campo-login"/>
 	<h:outputLabel value="Senha:" for="campo-senha"/>
-	<h:inputSecret value="#{beanUser.password}" id="campo-senha"/>
-	<h:commandButton value="Logar" action="#{beanUser.auth}"/>
+	<h:inputSecret value="#{beanSupplier.password}" id="campo-senha"/>
+	<h:commandButton value="Logar" action="#{beanSupplier.auth}"/>
 </h:form>
 </h:body>
 </html>

@@ -10,25 +10,22 @@
 <h:messages/>
 <h:form>
 
+	<h2>Form Fornecedor</h2>
 	<h:outputLabel value="Email:" for="email-field"/>
-	<h:inputText value="#{beanUser.email}" id="email-field"/>
+	<h:inputText value="#{beanSupplier.email}" id="email-field"/>
 	<h:outputLabel value="Senha:" for="password-field"/>
-	<h:inputSecret value="#{beanUser.password}" id="password-field"/>
-	<h:outputLabel value="Cpf:" for="cpf-field"/>
-	<h:inputText value="#{beanUser.cpf}" id="cpf-field"/>
-	<h:outputLabel value="Rg:" for="rg-field"/>
-	<h:inputText value="#{beanUser.rg}" id="rg-field"/>
+	<h:inputSecret value="#{beanSupplier.password}" id="password-field"/>
+	<h:outputLabel value="Cnpj:" for="cnpj-field"/>
+	<h:inputText value="#{beanSupplier.cnpj}" id="cnpj-field"/>
 	<h:outputLabel value="Nome:" for="name-field"/>
-	<h:inputText value="#{beanUser.name}" id="name-field"/>
-	<h:outputLabel value="Número de membros:" for="members-field"/>
-	<h:inputText value="#{beanUser.members_number}" id="members-field"/>
+	<h:inputText value="#{beanSupplier.name}" id="name-field"/>
 	<h:outputLabel value="Telefone:" for="phone-field"/>
-	<h:inputText value="#{beanUser.phone}" id="phone-field"/>
+	<h:inputText value="#{beanSupplier.phone}" id="phone-field"/>
 	<h:outputLabel value="Endereço:" for="address-field"/>
-	<h:inputText value="#{beanUser.address}" id="address-field"/>
+	<h:inputText value="#{beanSupplier.address}" id="address-field"/>
 	
-	<h:commandButton value="Cadastrar" action="#{beanUser.register}"/>
-	<h:commandLink value="Logar" action="user-login.xhtml"/>
+	<h:commandButton value="Cadastrar" action="#{beanSupplier.register}"/>
+	<h:commandLink value="Logar" action="supplier-login.xhtml"/>
 </h:form>
 </h:body>
 </html>
