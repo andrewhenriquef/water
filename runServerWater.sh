@@ -1,0 +1,1 @@
+java -cp ../lib/hsqldb.jar org.hsqldb.server.Server --database.0 file:../data/waterdb --dbname.0 waterdb
