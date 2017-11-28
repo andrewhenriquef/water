@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.List;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.ExternalContext;
@@ -110,5 +112,10 @@ public class BeanSupplier {
 		return manager;
 	}
 
+	public List<Supplier> getSuppliers() {
+		EntityManager manager = this.getEntityManager();
+		RepositorySupplier repository = new RepositorySupplier(manager);
+		return repository.getSuppliers();
+	}
 
 }

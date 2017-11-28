@@ -1,5 +1,7 @@
 package repository;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
@@ -28,5 +30,10 @@ public class RepositorySupplier {
 		} catch (NoResultException e) {
 			return false;
 		}
+	}
+	
+	public List<Supplier> getSuppliers() {
+		Query query = this.manager.createQuery("select x from Supplier x");
+		return query.getResultList();
 	}
 }
