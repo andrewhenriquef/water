@@ -32,6 +32,10 @@ public class RepositorySupplier {
 		}
 	}
 	
+	public void remove(Supplier supplier) {
+		this.manager.remove(supplier);
+	}
+	
 	public List<Supplier> getSuppliers() {
 		Query query = this.manager.createQuery("select x from Supplier x");
 		return query.getResultList();

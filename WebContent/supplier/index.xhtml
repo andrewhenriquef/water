@@ -46,7 +46,9 @@
 						<f:facet name="header">
 							<h:outputText value="Ações" />
 						</f:facet>
+						<h:commandLink action="#{beanSupplier.remove(supplier)}" value="Excluir" />
 					</h:column>
+					
 				</h:dataTable>
 			</h:form>
 		</h:panelGroup>

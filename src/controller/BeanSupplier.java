@@ -117,5 +117,18 @@ public class BeanSupplier {
 		RepositorySupplier repository = new RepositorySupplier(manager);
 		return repository.getSuppliers();
 	}
+	
+	public String remove(Supplier supplier) {
+		FacesContext fc = FacesContext.getCurrentInstance();
+		
+		EntityManager manager = this.getEntityManager();
+		RepositorySupplier repository = new RepositorySupplier(manager);
+		repository.remove(supplier);
+			
+		FacesMessage fm = new FacesMessage("Fornecedor excluido com sucesso!");
+		fm.setSeverity(FacesMessage.SEVERITY_INFO);
+		fc.addMessage(null, fm);
 
+		return "/supplier/index.xhtml";
+	}
 }
