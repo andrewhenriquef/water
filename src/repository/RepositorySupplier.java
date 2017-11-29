@@ -36,6 +36,14 @@ public class RepositorySupplier {
 		this.manager.remove(supplier);
 	}
 	
+	public Supplier edit(Supplier supplier) {
+		return this.manager.find(Supplier.class, supplier.getEmail()); 
+	}
+	
+	public void update(Supplier supplier) {
+		this.manager.merge(supplier);
+	}
+	
 	public List<Supplier> getSuppliers() {
 		Query query = this.manager.createQuery("select x from Supplier x");
 		return query.getResultList();

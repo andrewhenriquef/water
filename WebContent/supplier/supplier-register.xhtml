@@ -2,30 +2,30 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 		xmlns:h="http://java.sun.com/jsf/html">
-<h:head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Login</title>
-</h:head>
-<h:body>
-<h:messages/>
-<h:form>
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+		<title>Login</title>
+	</h:head>
+	<h:body>
+		<h:messages/>
+		<h:form>
 
-	<h2>Form Fornecedor</h2>
-	<h:outputLabel value="Email:" for="email-field"/>
-	<h:inputText value="#{beanSupplier.email}" id="email-field"/>
-	<h:outputLabel value="Senha:" for="password-field"/>
-	<h:inputSecret value="#{beanSupplier.password}" id="password-field"/>
-	<h:outputLabel value="Cnpj:" for="cnpj-field"/>
-	<h:inputText value="#{beanSupplier.cnpj}" id="cnpj-field"/>
-	<h:outputLabel value="Nome:" for="name-field"/>
-	<h:inputText value="#{beanSupplier.name}" id="name-field"/>
-	<h:outputLabel value="Telefone:" for="phone-field"/>
-	<h:inputText value="#{beanSupplier.phone}" id="phone-field"/>
-	<h:outputLabel value="Endereço:" for="address-field"/>
-	<h:inputText value="#{beanSupplier.address}" id="address-field"/>
-	
-	<h:commandButton value="Cadastrar" action="#{beanSupplier.register}"/>
-	<h:commandLink value="Logar" action="supplier-login.xhtml"/>
-</h:form>
-</h:body>
+			<h2>Cadastrar Fornecedor</h2>
+			<h:outputLabel value="Email:" for="email-field"/>
+			<h:inputText value="#{beanSupplier.email}" id="email-field"/>
+			<h:outputLabel value="Senha:" for="password-field"/>
+			<h:inputSecret value="#{beanSupplier.password}" id="password-field"/>
+			<h:outputLabel value="Cnpj:" for="cnpj-field"/>
+			<h:inputText value="#{beanSupplier.cnpj}" id="cnpj-field"/>
+			<h:outputLabel value="Nome:" for="name-field"/>
+			<h:inputText value="#{beanSupplier.name}" id="name-field"/>
+			<h:outputLabel value="Telefone:" for="phone-field"/>
+			<h:inputText value="#{beanSupplier.phone}" id="phone-field"/>
+			<h:outputLabel value="Endereço:" for="address-field"/>
+			<h:inputText value="#{beanSupplier.address}" id="address-field"/>
+			
+			<h:commandButton value="Cadastrar" action="#{beanSupplier.register}"/>
+			<h:commandLink value="Logar" action="supplier-login.xhtml"/>
+		</h:form>
+	</h:body>
 </html>

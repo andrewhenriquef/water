@@ -131,4 +131,44 @@ public class BeanSupplier {
 
 		return "/supplier/index.xhtml";
 	}
+	
+	public String edit(Supplier s) {
+		FacesContext fc = FacesContext.getCurrentInstance();
+		
+		EntityManager manager = this.getEntityManager();
+		RepositorySupplier repository = new RepositorySupplier(manager);
+		Supplier supplier = repository.edit(s);
+		setEmail(supplier.getEmail());
+		setPassword(supplier.getPassword());
+		setCnpj(supplier.getCnpj());
+		setName(supplier.getName());
+		setPhone(supplier.getPhone());
+		setAddress(supplier.getAddress());
+	
+		return "/supplier/supplier-edit.xhtml";
+	}
+	
+	public String update() {
+		FacesContext fc = FacesContext.getCurrentInstance();
+		
+		EntityManager manager = this.getEntityManager();
+		RepositorySupplier repository = new RepositorySupplier(manager);
+		
+		Supplier supplier = new Supplier();
+		
+		supplier.setEmail(email);
+		supplier.setPassword(password);
+		supplier.setCnpj(cnpj);
+		supplier.setName(name);
+		supplier.setPhone(phone);
+		supplier.setAddress(address);
+		
+		repository.update(supplier);
+			
+		FacesMessage fm = new FacesMessage("Fornecedor editado com sucesso!");
+		fm.setSeverity(FacesMessage.SEVERITY_INFO);
+		fc.addMessage(null, fm);
+
+		return "/supplier/index.xhtml";
+	}
 }
