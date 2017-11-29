@@ -1,5 +1,7 @@
 package repository;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
@@ -28,4 +30,22 @@ public class RepositoryUser {
 			return false;
 		}
 	}
+
+	public void remove(User user) {
+		this.manager.remove(user);
+	}
+	
+	public User edit(User user) {
+		return this.manager.find(User.class, user.getEmail()); 
+	}
+	
+	public void update(User user) {
+		this.manager.merge(user);
+	}
+	
+	public List<User> getUsers() {
+		Query query = this.manager.createQuery("select x from User x");
+		return query.getResultList();
+	}
+	
 }

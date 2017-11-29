@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.List;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.ExternalContext;
@@ -128,4 +130,66 @@ public class BeanUser {
 		return manager;
 	}
 	
+	public List<User> getUsers() {
+		EntityManager manager = this.getEntityManager();
+		RepositoryUser repository = new RepositoryUser(manager);
+		return repository.getUsers();
+	}
+
+	public String remove(User user) {
+		FacesContext fc = FacesContext.getCurrentInstance();
+
+		EntityManager manager = this.getEntityManager();
+		RepositoryUser repository = new RepositoryUser(manager);
+		repository.remove(user);
+
+		FacesMessage fm = new FacesMessage("Usuário excluido com sucesso!");
+		fm.setSeverity(FacesMessage.SEVERITY_INFO);
+		fc.addMessage(null, fm);
+
+		return "/user/user-index.xhtml";
+	}
+
+	public String edit(User u) {
+		FacesContext fc = FacesContext.getCurrentInstance();
+
+		EntityManager manager = this.getEntityManager();
+		RepositoryUser repository = new RepositoryUser(manager);
+		User user = repository.edit(u);
+		setEmail(user.getEmail());
+		setPassword(user.getPassword());
+		setMembers_number(members_number);
+		setCpf(user.getCpf());
+		setName(user.getName());
+		setPhone(user.getPhone());
+		setAddress(user.getAddress());
+
+		return "/user/user-edit.xhtml";
+	}
+
+	public String update() {
+		FacesContext fc = FacesContext.getCurrentInstance();
+
+		EntityManager manager = this.getEntityManager();
+		RepositoryUser repository = new RepositoryUser(manager);
+
+		User user = new User();
+
+		user.setEmail(email);
+		user.setPassword(password);
+		user.setCpf(cpf);
+		user.setMembers_number(members_number);
+		user.setName(name);
+		user.setPhone(phone);
+		user.setAddress(address);
+
+		repository.update(user);
+
+		FacesMessage fm = new FacesMessage("Usuario editado com sucesso!");
+		fm.setSeverity(FacesMessage.SEVERITY_INFO);
+		fc.addMessage(null, fm);
+
+		return "/user/user-index.xhtml";
+	}
+
 }
