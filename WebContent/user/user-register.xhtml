@@ -2,33 +2,67 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 		xmlns:h="http://java.sun.com/jsf/html">
-<h:head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Login</title>
-</h:head>
-<h:body>
-<h:messages/>
-<h:form>
+	<h:head>
+		
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+		<title>Login</title>
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+		
+		<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		
+		<!-- Latest compiled JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-	<h:outputLabel value="Email:" for="email-field"/>
-	<h:inputText value="#{beanUser.email}" id="email-field"/>
-	<h:outputLabel value="Senha:" for="password-field"/>
-	<h:inputSecret value="#{beanUser.password}" id="password-field"/>
-	<h:outputLabel value="Cpf:" for="cpf-field"/>
-	<h:inputText value="#{beanUser.cpf}" id="cpf-field"/>
-	<h:outputLabel value="Rg:" for="rg-field"/>
-	<h:inputText value="#{beanUser.rg}" id="rg-field"/>
-	<h:outputLabel value="Nome:" for="name-field"/>
-	<h:inputText value="#{beanUser.name}" id="name-field"/>
-	<h:outputLabel value="Número de membros:" for="members-field"/>
-	<h:inputText value="#{beanUser.members_number}" id="members-field"/>
-	<h:outputLabel value="Telefone:" for="phone-field"/>
-	<h:inputText value="#{beanUser.phone}" id="phone-field"/>
-	<h:outputLabel value="Endereço:" for="address-field"/>
-	<h:inputText value="#{beanUser.address}" id="address-field"/>
-	
-	<h:commandButton value="Cadastrar" action="#{beanUser.register}"/>
-	<h:commandLink value="Logar" action="user-login.xhtml"/>
-</h:form>
-</h:body>
+	</h:head>
+
+	<h:body>
+		<h:messages/>
+		
+
+		<div class="container">
+			<div class="row">
+				<h2>Cadastro de usuÃ¡rio</h2>
+
+				<h:form>
+					<div class="form-group">
+						<h:outputLabel value="Email:" for="email-field" />
+						<h:inputText value="#{beanUser.email}" id="email-field" class="form-control" />
+					</div>
+
+					<div class="form-group">
+						<h:outputLabel value="Senha:" for="password-field"/>
+						<h:inputSecret value="#{beanUser.password}" id="password-field" class="form-control"/>
+					</div>
+					<div class="form-group">
+						<h:outputLabel value="Cpf:" for="cpf-field"/>
+						<h:inputText value="#{beanUser.cpf}" id="cpf-field" class="form-control"/>
+					</div>
+					<div class="form-group">
+						<h:outputLabel value="Rg:" for="rg-field"/>
+						<h:inputText value="#{beanUser.rg}" id="rg-field" class="form-control"/>
+					</div>
+					<div class="form-group">
+						<h:outputLabel value="Nome:" for="name-field"/>
+						<h:inputText value="#{beanUser.name}" id="name-field" class="form-control"/>
+					</div>
+					<div class="form-group">
+						<h:outputLabel value="Numero de membros:" for="members-field"/>
+						<h:inputText value="#{beanUser.members_number}" id="members-field" class="form-control"/>
+					</div>
+					<div class="form-group">
+						<h:outputLabel value="Telefone:" for="phone-field"/>
+						<h:inputText value="#{beanUser.phone}" id="phone-field" class="form-control"/>
+					</div>
+					<div class="form-group">
+						<h:outputLabel value="Endereco:" for="address-field"/>
+						<h:inputText value="#{beanUser.address}" id="address-field" class="form-control"/>
+					</div>
+					<h:commandButton value="Cadastrar" action="#{beanUser.register}" class="btn btn-primary"/>
+					<h:commandLink value="Logar" action="user-login.xhtml"/>
+				</h:form>
+			</div>
+		</div>
+	</h:body>
 </html>

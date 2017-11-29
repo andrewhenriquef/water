@@ -18,41 +18,47 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	</h:head>
 	<h:body>
-		<h:panelGroup rendered="#{not empty beanUser.users}">
-			<h:form>
-				<h:dataTable value="#{beanUser.users}" var="user" class="table table-striped">
-					<f:facet name="header">
-						<h:outputText value="Lista de Fornecedores" />
-					</f:facet>
-					<h:column>
-						<f:facet name="header">
-							<h:outputText value="email" />
-						</f:facet>
-						<h:outputText value="#{user.email}" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">
-							<h:outputText value="name" />
-						</f:facet>
-						<h:outputText value="#{user.name}" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">
-							<h:outputText value="cpf" />
-						</f:facet>
-						<h:outputText value="#{user.cpf}" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">
-							<h:outputText value="Ações" />
-						</f:facet>
-						
-						<h:commandLink action="#{beanUser.edit(user)}" value="editar" />
-						<h:commandLink action="#{beanUser.remove(user)}" value="Excluir" />
-					</h:column>
-					
-				</h:dataTable>
-			</h:form>
-		</h:panelGroup>
+		<div class="container">
+			<div class="row">
+				<h:panelGroup rendered="#{not empty beanUser.users}">
+					<h:form>
+						<h:dataTable value="#{beanUser.users}" var="user" class="table table-striped">
+							<f:facet name="header">
+								<h:outputText value="Lista de Usuários" />
+							</f:facet>
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="email" />
+								</f:facet>
+								<h:outputText value="#{user.email}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="name" />
+								</f:facet>
+								<h:outputText value="#{user.name}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="cpf" />
+								</f:facet>
+								<h:outputText value="#{user.cpf}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="Ações" />
+								</f:facet>
+				
+								<h:commandLink action="#{beanUser.edit(user)}" value="editar" />
+								<h:commandLink action="#{beanUser.remove(user)}" value="Excluir" />
+							</h:column>
+				
+						</h:dataTable>
+					</h:form>
+				</h:panelGroup>
+				
+			</div>
+		</div>
+		
 	</h:body>
 </html>
