@@ -20,6 +20,8 @@
 	<h:body>
 		<div class="container">
 			<div class="row">
+				<h1>Usuários</h1>
+				<a href="/Water/user/user-register.xhtml" class="btn btn-primary">Novo Usuário</a>
 				<h:panelGroup rendered="#{not empty beanUser.users}">
 					<h:form>
 						<h:dataTable value="#{beanUser.users}" var="user" class="table table-striped">
