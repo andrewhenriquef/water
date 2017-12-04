@@ -68,7 +68,7 @@ public class BeanSupplier {
 			ExternalContext ec = fc.getExternalContext();
 			HttpSession session = (HttpSession) ec.getSession(false);
 			session.setAttribute("user", email);
-			return "/home";
+			return showById(email);
 		} else {
 			FacesMessage fm = new FacesMessage("login e/ou senha invalidos");
 			fm.setSeverity(FacesMessage.SEVERITY_ERROR);
@@ -146,6 +146,38 @@ public class BeanSupplier {
 		setAddress(supplier.getAddress());
 	
 		return "/supplier/supplier-edit.xhtml";
+	}
+	
+	public String showById(String email) {
+		FacesContext fc = FacesContext.getCurrentInstance();
+		
+		EntityManager manager = this.getEntityManager();
+		RepositorySupplier repository = new RepositorySupplier(manager);
+		Supplier supplier = repository.findById(email);
+		setEmail(supplier.getEmail());
+		setPassword(supplier.getPassword());
+		setCnpj(supplier.getCnpj());
+		setName(supplier.getName());
+		setPhone(supplier.getPhone());
+		setAddress(supplier.getAddress());
+	
+		return "/supplier/supplier-profile.xhtml";
+	}
+	
+	public String show(Supplier s) {
+		FacesContext fc = FacesContext.getCurrentInstance();
+		
+		EntityManager manager = this.getEntityManager();
+		RepositorySupplier repository = new RepositorySupplier(manager);
+		Supplier supplier = repository.edit(s);
+		setEmail(supplier.getEmail());
+		setPassword(supplier.getPassword());
+		setCnpj(supplier.getCnpj());
+		setName(supplier.getName());
+		setPhone(supplier.getPhone());
+		setAddress(supplier.getAddress());
+	
+		return "/supplier/supplier-profile.xhtml";
 	}
 	
 	public String update() {

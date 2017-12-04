@@ -36,6 +36,10 @@ public class RepositorySupplier {
 		this.manager.remove(supplier);
 	}
 	
+	public Supplier findById(String email) {
+		return this.manager.find(Supplier.class, email); 
+	}
+	
 	public Supplier edit(Supplier supplier) {
 		return this.manager.find(Supplier.class, supplier.getEmail()); 
 	}
