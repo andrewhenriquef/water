@@ -3,8 +3,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	  xmlns:h="http://java.sun.com/jsf/html">
 	<h:head>
+
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<title>Perfil de fornecedor</title>
+		<title>Doações</title>
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
 		
@@ -16,21 +17,16 @@
 		
 	</h:head>
 	<h:body>
-		<h:messages/>
 		<div class="container">
 			<div class="row">
-				<h2>Perfil</h2>
-				
-				<p>E-mail: #{beanSupplier.email}</p>
-				<p>CNPJ: #{beanSupplier.cnpj}</p>
-				<p>Nome: #{beanSupplier.name}</p>
-				<p>Telefone: #{beanSupplier.phone}</p>
-				<p>Endereço: #{beanSupplier.address}</p>
-				
 				<h:form>
-					<a href="/Water/supplier/donation.xhtml" class="btn btn-primary"> Fazer doações </a>
-					<h:commandLink value="Sair" action="#{beanSupplier.loggout}"/>
-				</h:form>
+					<h2>Efetuar doação</h2>
+					<div class="form-group col-md-4 col-sm-4 col-xs-12">
+						<h:outputLabel value="Litros de água: " for="total_litters-field" />
+						<h:inputText value="#{beanWater.total_litters}" id="total_litters-field" class="form-control" />
+					</div>
+					<h:commandButton value="Doar" action="#{beanWater.donate}" class="btn btn-primary"/>
+				</h:form>	
 			</div>
 		</div>
 		

@@ -1,10 +1,29 @@
 package controller;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
+import javax.persistence.EntityManager;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import model.Supplier;
+import model.Water;
+import repository.RepositoryWater;
+
+@ManagedBean
 public class BeanWater {
 	private int id;
 	private int total_litters;
 	private int used_litters;
+	private Supplier supplier;
 	
+	public Supplier getSupplier() {
+		return supplier;
+	}
+	public void setSupplier(Supplier supplier) {
+		this.supplier = supplier;
+	}
 	public int getId() {
 		return id;
 	}
@@ -23,6 +42,33 @@ public class BeanWater {
 	public void setUsed_litters(int used_litters) {
 		this.used_litters = used_litters;
 	}
+	
+	public String donate() {
+		FacesContext fc = FacesContext.getCurrentInstance();
+		EntityManager manager = getEntityManager();
+		RepositoryWater repository = new RepositoryWater(manager);
+		ExternalContext ec = fc.getExternalContext();
+		HttpSession session = (HttpSession) ec.getSession(false);
+		String userEmail = (String)session.getAttribute("user");
+		Supplier supplier = repository.findSupplier(userEmail);
+		
+		Water water = new Water();
+		water.setTotal_litters(total_litters);
+		water.setSupplier(supplier);
+		
+		repository.insert(water);
+		
+		return "Water/supplier/index.xhtml";
+	}
+	
+	private EntityManager getEntityManager() {
+		FacesContext fc = FacesContext.getCurrentInstance();
+		ExternalContext ec = fc.getExternalContext();
+		HttpServletRequest request = (HttpServletRequest) ec.getRequest();
+		EntityManager manager = (EntityManager)request.getAttribute("EntityManager");
+		return manager;
+	}
+	
 	
 
 }

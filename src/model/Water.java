@@ -1,14 +1,20 @@
 package model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Water {
 	@Id
+	@GeneratedValue
 	private int id;
 	private int total_litters;
 	private int used_litters;
+
+	@ManyToOne
+	private Supplier supplier;
 	
 	public int getId() {
 		return id;
@@ -29,5 +35,12 @@ public class Water {
 		this.used_litters = used_litters;
 	}
 	
+	public void setSupplier(Supplier supplier) {
+		this.supplier = supplier;
+	}
+	
+	public Supplier getSupplier() {
+		return supplier;
+	}
 	
 }
