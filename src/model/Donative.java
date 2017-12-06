@@ -11,9 +11,11 @@ public class Donative {
 	@GeneratedValue
 	private int id;
 	@ManyToOne
-	private Water water;
+	private Reservoir reservoir;
 	@ManyToOne
 	private User user;
+	private int litters_donated;
+	
 	public int getId() {
 		return id;
 	}
@@ -24,8 +26,21 @@ public class Donative {
 	public User getUser() {
 		return user;
 	}
+	
 	public void setUser(User user) {
 		this.user = user;
+	}
+	public Reservoir getReservoir() {
+		return reservoir;
+	}
+	public void setReservoir(Reservoir reservoir) {
+		this.reservoir = reservoir;
+	}
+	public int getLitters_donated() {
+		return litters_donated;
+	}
+	public void setLitters_donated(int litter_donated) {
+		this.litters_donated = litter_donated;
 	}
 	
 }

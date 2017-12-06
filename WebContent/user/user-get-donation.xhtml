@@ -1,11 +1,80 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-	<head>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html">
+	<h:head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<title>Doações</title>
-	</head>
-	<body>
+		<title>Solicitação de agua</title>
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
 		
-	</body>
+		<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		
+		<!-- Latest compiled JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</h:head>
+	<h:body>
+		<h:messages/>
+		<!-- Static navbar -->
+     <nav class="navbar navbar-default">
+       <div class="container-fluid">
+         <div class="navbar-header">
+           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+             <span class="sr-only">Toggle navigation</span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+           </button>
+           <a class="navbar-brand" href="/Water/">Life's Water</a>
+         </div>
+         <div id="navbar" class="navbar-collapse collapse">
+           <ul class="nav navbar-nav">
+             <li class="dropdown">
+               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Login<span class="caret"></span></a>
+               <ul class="dropdown-menu">
+                 <li><a href="/Water/user/user-login.xhtml">Login Usuario</a></li>
+                 <li><a href="/Water/supplier/supplier-login.xhtml">Login Fornecedor</a></li>
+                 <li><a href="/Water/admin/admin-login.xhtml">Login Administrador</a></li>
+               </ul>
+             </li>
+             <li class="dropdown">
+               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Registrar<span class="caret"></span></a>
+               <ul class="dropdown-menu">
+                 <li><a href="/Water/user/user-register.xhtml">Usuario</a></li>
+                 <li><a href="/Water/supplier/supplier-register.xhtml">Fornecedor</a></li>
+                 <li><a href="/Water/admin/admin-register.xhtml">Administrador</a></li>
+               </ul>
+             </li>
+             
+             <li class="dropdown">
+               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Visualizar<span class="caret"></span></a>
+               <ul class="dropdown-menu">
+                 <li><a href="/Water/user/user-index.xhtml">Usuarios</a></li>
+                 <li><a href="/Water/supplier/index.xhtml">Fornecedores</a></li>
+               </ul>
+             </li>
+             <li class="active"><a href="/Water/supplier/donation.xhtml">Doar para a ong</a></li>
+             <li><a href="/Water/user/user-get-donation.xhtml">Solicitar água</a></li>
+           </ul>
+           
+         </div><!--/.nav-collapse -->
+       </div><!--/.container-fluid -->
+     </nav>
+		
+		<div class="container">
+			<div class="row">
+				<h:form>
+					<h2>Solicitação de água</h2>
+				
+					<div class="form-group">
+						<h:outputLabel value="Quantidade de água solicitada:" for="campo-login" />
+						<h:inputText value="#{beanDonative.littersRequested}" id="campo-login" class="form-control" />
+					</div>
+					<h:commandButton value="Requisitar" action="#{beanDonative.requestDonation}" class="btn btn-primary" />
+				</h:form>
+			</div>
+		</div>
+		
+	</h:body>
 </html>

@@ -7,66 +7,66 @@ import javax.persistence.EntityManager;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import model.Donative;
 import model.Reservoir;
-import model.Supplier;
 import model.User;
-import model.Water;
+import repository.RepositoryDonative;
 import repository.RepositoryReservoir;
 import repository.RepositoryUser;
-import repository.RepositoryWater;
 
 @ManagedBean
-public class BeanWater {
-	private int id;
-	private int total_litters;
-	private int used_litters;
-	private Supplier supplier;
+public class BeanDonative {
 	
-	public Supplier getSupplier() {
-		return supplier;
+	private int littersRequested;
+	private User user;
+	private Reservoir reservoir;
+	
+	public User getUser() {
+		return user;
 	}
-	public void setSupplier(Supplier supplier) {
-		this.supplier = supplier;
+	public void setUser(User user) {
+		this.user = user;
 	}
-	public int getId() {
-		return id;
+	public Reservoir getReservoir() {
+		return reservoir;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setReservoir(Reservoir reservoir) {
+		this.reservoir = reservoir;
 	}
-	public int getTotal_litters() {
-		return total_litters;
+	public int getLittersRequested() {
+		return littersRequested;
 	}
-	public void setTotal_litters(int total_litters) {
-		this.total_litters = total_litters;
-	}
-	public int getUsed_litters() {
-		return used_litters;
-	}
-	public void setUsed_litters(int used_litters) {
-		this.used_litters = used_litters;
+	public void setLittersRequested(int littersRequested) {
+		this.littersRequested = littersRequested;
 	}
 	
-	public String donate() {
+
+	public String requestDonation() {
 		FacesContext fc = FacesContext.getCurrentInstance();
 		EntityManager manager = getEntityManager();
-		RepositoryWater repository = new RepositoryWater(manager);
 		ExternalContext ec = fc.getExternalContext();
 		HttpSession session = (HttpSession) ec.getSession(false);
 		String userEmail = (String)session.getAttribute("user");
-		Supplier supplier = repository.findSupplier(userEmail);
+		RepositoryUser repositoryUser = new RepositoryUser(manager);
+		User user = repositoryUser.findById(userEmail);
+		
 		RepositoryReservoir repositoryReservoir = new RepositoryReservoir(manager);
 		Reservoir reservoir = repositoryReservoir.getReservoir();
 		
-		Water water = new Water();
-		water.setTotal_litters(total_litters);
-		water.setSupplier(supplier);
-
-		reservoir.setLitters(reservoir.getLitters() + total_litters);
+		//update reservoir
+		reservoir.setLitters(reservoir.getLitters() - littersRequested);
 		repositoryReservoir.update(reservoir);
-		repository.insert(water);
 		
-		return "/supplier/index.xhtml";
+		Donative donative = new Donative();
+		
+		donative.setLitters_donated(littersRequested);
+		donative.setUser(user);
+		donative.setReservoir(reservoir);
+		
+		RepositoryDonative repositoryDonative = new RepositoryDonative(manager);
+		repositoryDonative.insert(donative);
+		
+		return "/user/user-get-donation.xhtml";
 	}
 	
 	private EntityManager getEntityManager() {
@@ -76,5 +76,6 @@ public class BeanWater {
 		EntityManager manager = (EntityManager)request.getAttribute("EntityManager");
 		return manager;
 	}
-
+	
+	
 }

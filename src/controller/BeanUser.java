@@ -26,11 +26,12 @@ public class BeanUser {
 	private String email;
 	private String phone;
 	private String address;
-
+	private int littersRequested;
 	
 	public String getCpf() {
 		return cpf;
 	}
+	
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}

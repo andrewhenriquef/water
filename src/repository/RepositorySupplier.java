@@ -52,4 +52,5 @@ public class RepositorySupplier {
 		Query query = this.manager.createQuery("select x from Supplier x");
 		return query.getResultList();
 	}
+	
 }
