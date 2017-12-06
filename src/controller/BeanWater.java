@@ -7,8 +7,10 @@ import javax.persistence.EntityManager;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import model.Reservoir;
 import model.Supplier;
 import model.Water;
+import repository.RepositoryReservoir;
 import repository.RepositoryWater;
 
 @ManagedBean
@@ -51,14 +53,18 @@ public class BeanWater {
 		HttpSession session = (HttpSession) ec.getSession(false);
 		String userEmail = (String)session.getAttribute("user");
 		Supplier supplier = repository.findSupplier(userEmail);
+		RepositoryReservoir repositoryReservoir = new RepositoryReservoir(manager);
+		Reservoir reservoir = repositoryReservoir.getReservoir();
 		
 		Water water = new Water();
 		water.setTotal_litters(total_litters);
 		water.setSupplier(supplier);
-		
+
+		reservoir.setLitters(reservoir.getLitters() + total_litters);
+		repositoryReservoir.update(reservoir);
 		repository.insert(water);
 		
-		return "Water/supplier/index.xhtml";
+		return "/supplier/index.xhtml";
 	}
 	
 	private EntityManager getEntityManager() {
@@ -68,7 +74,5 @@ public class BeanWater {
 		EntityManager manager = (EntityManager)request.getAttribute("EntityManager");
 		return manager;
 	}
-	
-	
 
 }

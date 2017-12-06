@@ -50,7 +50,7 @@
 								<f:facet name="header">
 									<h:outputText value="Ações" />
 								</f:facet>
-				
+								<h:commandLink action="#{beanUser.show(user)}" value="mostrar" />
 								<h:commandLink action="#{beanUser.edit(user)}" value="editar" />
 								<h:commandLink action="#{beanUser.remove(user)}" value="Excluir" />
 							</h:column>

@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
+import model.Supplier;
 import model.User;
 
 public class RepositoryUser {
@@ -17,6 +18,10 @@ public class RepositoryUser {
 	
 	public void insert(User user) {
 		manager.persist(user);
+	}
+	
+	public User findById(String email) {
+		return this.manager.find(User.class, email); 
 	}
 	
 	public boolean validate(String email, String password) {

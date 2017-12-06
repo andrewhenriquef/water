@@ -10,7 +10,9 @@ import javax.persistence.EntityManager;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import model.Supplier;
 import model.User;
+import repository.RepositorySupplier;
 import repository.RepositoryUser;
 
 @ManagedBean
@@ -149,6 +151,44 @@ public class BeanUser {
 
 		return "/user/user-index.xhtml";
 	}
+	
+	public String show(User u) {
+		FacesContext fc = FacesContext.getCurrentInstance();
+		
+		EntityManager manager = this.getEntityManager();
+		RepositoryUser repository = new RepositoryUser(manager);
+		User user = repository.edit(u);
+
+		setEmail(user.getEmail());
+		setPassword(user.getPassword());
+		setRg(user.getRg());
+		setCpf(user.getCpf());
+		setName(user.getName());
+		setMembers_number(user.getMembers_number());
+		setPhone(user.getPhone());
+		setAddress(user.getAddress());
+	
+		return "/user/user-profile.xhtml";
+	}
+	
+	public String showById(String email) {
+		FacesContext fc = FacesContext.getCurrentInstance();
+		
+		EntityManager manager = this.getEntityManager();
+		RepositoryUser repository = new RepositoryUser(manager);
+		User user = repository.findById(email);
+		
+		setEmail(user.getEmail());
+		setPassword(user.getPassword());
+		setRg(user.getRg());
+		setCpf(user.getCpf());
+		setName(user.getName());
+		setMembers_number(user.getMembers_number());
+		setPhone(user.getPhone());
+		setAddress(user.getAddress());		
+	
+		return "/user/user-profile.xhtml";
+	}
 
 	public String edit(User u) {
 		FacesContext fc = FacesContext.getCurrentInstance();
@@ -158,7 +198,7 @@ public class BeanUser {
 		User user = repository.edit(u);
 		setEmail(user.getEmail());
 		setPassword(user.getPassword());
-		setMembers_number(members_number);
+		setMembers_number(user.getMembers_number());
 		setCpf(user.getCpf());
 		setName(user.getName());
 		setPhone(user.getPhone());

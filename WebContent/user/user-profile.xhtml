@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html">
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Perfil de usuário</title>
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+		
+		<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		
+		<!-- Latest compiled JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		
+	</h:head>
+	<h:body>
+		<h:messages/>
+		<div class="container">
+			<div class="row">
+				<h2>Perfil</h2>
+				
+				<p>E-mail: #{beanUser.email}</p>
+				<p>CPF: #{beanUser.cpf}</p>
+				<p>RG: #{beanUser.rg}</p>
+				<p>Nome: #{beanUser.name}</p>
+				<p>Membros da familia: #{beanUser.members_number}</p>
+				<p>Telefone: #{beanUser.phone}</p>
+				<p>Endereço: #{beanUser.address}</p>
+	
+				<h:form>
+					<a href="/Water/user/user-get-donation.xhtml" class="btn btn-primary"> Solicitar doações </a>
+					<h:commandLink value="Sair" action="#{beanUser.loggout}"/>
+				</h:form>
+			</div>
+		</div>
+		
+	</h:body>
+</html>
